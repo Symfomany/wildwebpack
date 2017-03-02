@@ -10,12 +10,6 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 module.exports = webpackMerge(commonConfig, {
 
-  /**
-   * Disable debug mode for production.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#debug
-   */
-  debug: false,
 
   /**
    * Developer tool to enhance debugging.
@@ -84,15 +78,6 @@ module.exports = webpackMerge(commonConfig, {
      */
     new WebpackMd5Hash(),
 
-    /**
-     * Plugin: DedupePlugin
-     * Description: Prevents the inclusion of duplicate code into your bundle
-     * and instead applies a copy of the function at runtime.
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-     * See: https://github.com/webpack/docs/wiki/optimization#deduplication
-     */
-    new DedupePlugin(),
 
     /**
      * Plugin: UglifyJsPlugin

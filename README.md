@@ -8,13 +8,18 @@ Stack
 -----
 
 - NPM
+- ESLINT (console + webpack + babel-eslint)
 - Webpack
-- ES 6 / Babel (Module Loading)
+- Webpack Server + Webpack Merger
+- AirBnB StyleGuide
+- ES6 / Babel (Module Loading)
 - SASS
+- CSS
 
 
 
-Prerequisits
+
+Requirements
 ------------
 
 Install a few dependencies globally::
