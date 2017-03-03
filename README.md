@@ -1,8 +1,5 @@
-![enter image description here](https://cloudinary-a.akamaihd.net/bountysource/image/gravatar/d_noaoqqwxegvmulwus0un.png,c_pad,w_200,h_200,b_white/8e13067d3e8d41672ae8fbd5637d836a)
+![enter image description here](https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/01/1484692838webpack-dependency-tree.png)
 
-![enter image description here](http://egorsmirnov.me/images/posts/js.png)
-
-![enter image description here](http://www.blogdev.fr/images/logo/sass.png)
 Wild Webpack Project
 =======================
 
