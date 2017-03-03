@@ -1,3 +1,4 @@
 button{
 	color: $primary-color;
+	@include border-radius(2px)
 }

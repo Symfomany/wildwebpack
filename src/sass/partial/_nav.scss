@@ -2,8 +2,8 @@ nav{
 	ul{
 		li{
 				background-color: azure;
-				border-radius: 2px;
 				color: $primary-color;
+				@include border-radius(2px)
 		}
 	}
 }

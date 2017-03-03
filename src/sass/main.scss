@@ -1,4 +1,5 @@
 @import 'partial/_variables';
+@import 'partial/_mixins';
 @import 'partial/_buttons';
 @import 'partial/_nav';
 
@@ -10,8 +11,13 @@ body {
         div.jumbotron{
             background-color: beige;
             a{
-                color: $primary-color;
-                border-radius: 2px;
+                color: $clear-color;
+                @include border-radius(2px)
+            }
+            footer{
+                a{
+                    color: $primary-color;
+                }
             }
             ul{
                 li{
