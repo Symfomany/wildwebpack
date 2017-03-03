@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -53,12 +54,26 @@ module.exports = {
         to: 'img/',
       },
     ]),
+
+    new ExtractTextPlugin('./css/main.css'), // extract css in seperate file
+
   ],
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/ },
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'] },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader',
+        }),
+      },
+      { test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader!sass-loader',
+        }),
+      },
       { test: /\.(png|jpe?g)$/, loader: 'url-loader?limit=55192' },
       // helps to load bootstrap's css.
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
