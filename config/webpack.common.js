@@ -3,13 +3,20 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 
 
 module.exports = {
-  entry: './src/app.js', // just for SPA with component approach. Possible Milti-Page with multiple entry/output
+  entry: {
+    vendor: './src/vendor.js',
+    app: './src/app.js',
+  }, // just for SPA with component approach. Possible Milti-Page with multiple entry/output
   output: {
     path: path.join(__dirname, '..', 'dist'),
-    filename: 'bundle.js', // for multi-page app
+    filename: '[name].[hash].bundle.js', // for multi-page app
+  },
+  resolve: {
+    extensions: ['.js', '.json'],
   },
   plugins: [
     new ProgressBarPlugin(),
@@ -32,13 +39,20 @@ module.exports = {
       },
     }),
 
+    new InlineManifestWebpackPlugin({
+      name: 'webpackManifest',
+    }),
+
+
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'app'],
+    }),
 
     new CopyWebpackPlugin([
       { from: './src/img/',
         to: 'img/',
       },
     ]),
-
   ],
   module: {
     loaders: [

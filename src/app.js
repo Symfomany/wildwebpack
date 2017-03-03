@@ -12,6 +12,7 @@ console.clear();
 const bonjour = new Message('Bonjour Wild Code Scool', 'Enjoy ES6 ^^');
 console.warn(bonjour);
 
+
 /**
  * Just a test for Jquery...
  */

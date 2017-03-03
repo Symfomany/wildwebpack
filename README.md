@@ -9,11 +9,11 @@ Wild Webpack Project
 Stack
 -----
 
-- NPM
+- Node with NPM (scripts)
 - Multiple Environments (Dev , Prod...)
 - Webpack
 - Webpack Server + Webpack Merger + HMR
-- ESLINT (console + webpack + babel-eslint) folow StyleGuide
+- ESLINT (console + webpack + babel-eslint) follow StyleGuide
 - AirBnB StyleGuide
 - ES6 / Babel (Module Loading)
 - SASS or CSS
@@ -23,6 +23,23 @@ Recommandations
 ------------
 
 Work in /src directory (css, img, fonts) and that's all!
+
+
+Permission Issues
+------------
+Fixing npm permissions
+
+1. Find the path to npm's directory:
+```
+ npm config get prefix
+```
+
+2. Change the owner of npm's directories to the name of the current user
+```
+ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+```
+
+
 
 Requirements
 ------------
@@ -35,6 +52,13 @@ Install a few dependencies globally::
   $ npm install -g eslint
   $ npm install -g imagemin
 
+Maybe, you shoud update/upgrade your Node.JS
+
+```
+npm install -g n
+n latest
+npm install npm@latest -g
+```
 
 Development
 -----------
@@ -49,8 +73,17 @@ Start the Webpack development server on 'localhost:3000'::
 
 
 Linting::
-
+------------------
   $ npm run lint
+
+
+
+Utils
+------------------
+How to kill on port
+```
+  fuser -n tcp -k 3000
+```
 
 
 HTML Webpack Plugin
