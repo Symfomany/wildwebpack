@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wild Webpack 2</title>
+  <!--cdn Boostrap-->
+  <link rel="stylesheet" type="" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+ <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Wild Webpack Project</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Qu'est-ce WebPack ?</h1>
+        <div class="phenomic-BodyContainer" data-reactid="57"><h1 id="pourquoi-webpack-"><a href="#pourquoi-webpack-" class="phenomic-HeadingAnchor">#</a>Pourquoi Webpack ?</h1>
+          <p>Webpack a pour objectif de vous faciliter la vie, notamment en vous aidant à
+          organiservotre application JS en modules</a>.
+          Le projet est déjà très populaire, particulièrement dans la communauté React, ce qui
+          parait logique vu qu'il s'agit de développer des composants.</p>
+          <p>Webpack apporte à ce niveau des fonctionnalités intéressantes :</p>
+          <ul>
+          <li>disposer de toutes les ressources statiques (CSS, images, fontes) en tant que
+          module,</li>
+          <li>intégrer et consommer des bibliothèques tierces très simplement en tant
+          que module,</li>
+          <li>séparer votre <code>build</code> en plusieurs morceaux, chargés à la demande,</li>
+          <li>garder un chargement initial très rapide si besoin,</li>
+          <li>personnaliser la plupart des étapes du processus,</li>
+          <li>adapté pour les gros projets.</li>
+          </ul>
+          <p>Avant Webpack, nous avions beau avoir des super task-runners comme
+          <a href="">Grunt</a>
+          ou
+          <a href="">Gulp</a>,
+          il faut avouer qu'on bricolait quand même pas mal.</p>
+          <p>Et vous avez sûrement mieux à faire que de devoir modifier des configurations ou
+          des définitions de tâches pour ajuster les copies d'images ou de fontes, ou
+          encore ajuster des URL générées.
+          Il y avait avec ces solutions une grande partie de rafistolage, où l’on se
+          devait de faire très attention à la moindre réorganisation de code, sous peine
+          de casser une partie du rendu.</p>
+          <p>Prenons par exemple une image de fond déclarée en CSS via un
+          <code>background: url(...)</code>.
+          Qui vous préviendra lorsque celle-ci aura été supprimée ou déplacée,
+          et que la référence n'est donc plus bonne ?
+          Peut-être vos logs de serveur web ? En recherchant les erreurs HTTP 404...</p>
+          <p>Vous avez la responsabilité de gérer vos tâches et leurs résultats tout en vous
+          assurant du bon fonctionnement car vous êtes la glu entre tous ces morceaux.</p>
+          <h1 id="quest-ce-que-webpack-"><a href="#quest-ce-que-webpack-" class="phenomic-HeadingAnchor">#</a>Qu'est-ce que Webpack ?</h1>
+          <p>Pas besoin de s'appeler Einstein pour comprendre les intentions de Webpack en
+          interprétant le nom : web + pack. Faire un pack prêt pour le web.</p>
+          <p>Nativement, Webpack s'occupe uniquement de ressources JavaScript.
+          Webpack propose un système de <em>loader</em> qui permet de transformer tout et
+          n'importe quoi en JavaScript (mais pas que).
+          Ainsi, tout est consommable en tant que module.</p>
+          <p>Webpack prend en charge la fonction <code>require()</code> (connue et utilisée dans node.js et
+          browserify) et permet de définir des nouveaux comportements.</p>
+          <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> myModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./my-module.js"</span>)
+          <span class="hljs-comment">// "classique" pour ceux qui utilisent node.js/browserify</span>
+
+          <span class="hljs-comment">// nouveauté avec Webpack</span>
+          <span class="hljs-keyword">var</span> myStyles = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./my-module.css"</span>)
+          <span class="hljs-comment">// si vous utilisez le css-loader par exemple, toutes les directives url()</span>
+          <span class="hljs-comment">// se comporteront comme des require(), ainsi, vous pourrez appliquer</span>
+          <span class="hljs-comment">// des loaders sur tous vos assets et vous aurez des erreurs à la compilation</span>
+          <span class="hljs-comment">// si une ressource est manquante.</span>
+
+          <span class="hljs-comment">// vous pourrez aussi consommer des SVG en tant que chaînes (eg: raw-loader)</span>
+          <span class="hljs-keyword">var</span> mySVG = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./my-module.svg"</span>)
+
+          <span class="hljs-comment">// ou inclure des fichiers dans votre build (via file-loader)</span>
+          <span class="hljs-built_in">require</span>(<span class="hljs-string">"index.html"</span>)</code></pre>
+          <p>C'est cette partie qui est aujourd'hui la plus intéressante et la plus flexible.</p>
+          <figure>
+            <img src="index.jpg" alt="">
+            <figcaption>
+              Webpack transforme une multitude de fichiers en lots par responsabilité
+            </figcaption>
+          </figure>
+          <p>Webpack va donc pouvoir s'occuper aussi bien de vos modules JavaScript
+          (CommonJS, AMD, UMD...),
+          mais aussi de <a href="https://github.com/css-modules/css-modules">vos modules CSS</a>,
+          de vos fichiers SVG, gif, png, etc. ainsi que potentiellement n'importe quel
+          type de fichier pour peu que vous preniez le temps d'écrire un <em>loader</em>
+          (rassurez-vous, il existe déjà un loader pour tous les fichiers que vous
+          manipulez couramment).</p>
+          <p>En plus de cela, il a été pensé afin de permettre la séparation de votre pack
+          (votre gros fichier JavaScript compilé) en plusieurs morceaux, selon vos
+          besoins : vous pourrez ainsi ajuster la balance entre performance et lazy
+          loading.</p>
+          <p>Avec les solutions existantes, il est actuellement très difficile d'arriver
+          facilement à ce que propose Webpack, pour ne pas dire impossible.</p>
+          <p>Il est possible d'avoir l'équivalent avec
+          <a href="/fr/articles/js/browserify/">browserify</a> comme l'a indiqué son auteur
+          dans un article
+          <a href="https://gist.github.com/substack/68f8d502be42d5cd4942">browserify for Webpack users</a>
+          (qui est une réponse à la ressource
+          <a href="https://github.com/webpack/docs/wiki/webpack-for-browserify-users">Webpack for browserify users</a>
+          ).</p>
+          <p>Il est clair que cela n'est pas aussi simple qu'avec Webpack qui est beaucoup
+          plus flexible de par sa conception et ses objectifs initiaux.</p>
+          <p>Par exemple, browserify pourra appliquer d'éventuelles transformations
+          uniquement au code local et donc pas dans <code>node_modules/*</code>.
+          Cela peut être problématique et nous conduit forcément à finir par du
+          bricolage si on veut consommer des assets de modules de manière transparente.</p>
+          <p>Ne parlons pas du
+          <a href="http://webpack.github.io/docs/hot-module-replacement-with-webpack.html">hot loading</a>
+          (remplacement de code à la volée)
+          qui n'est pas du tout facile à mettre en place (pour le moment) avec
+          autre chose que Webpack.</p>
+          <h1 id="comment-intégrer-webpack-dans-votre-workflow-"><a href="#comment-int%C3%A9grer-webpack-dans-votre-workflow-" class="phenomic-HeadingAnchor">#</a>Comment intégrer Webpack dans votre workflow ?</h1>
+          <p>Dans un premier temps vous pourrez facilement intégrer Webpack en remplacement de
+          <a href="/fr/articles/js/browserify/">browserify</a> ou d'une éventuelle
+          concaténation via des plugins Gulp, Grunt, etc.</p>
+          <p>Dans un second temps, vous pourrez très certainement remplacer une partie de vos
+          autres tâches pour ajuster/copier/déplacer vos assets (CSS, images...) et
+          ainsi réduire le code dédié à votre workflow. Il se pourrait alors que votre
+          utilisation d'un task-runner soit maintenant si réduite que vous pourriez vous
+          en passez en utilisant simplement
+          <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">des scripts npm</a>.</p>
+          <p>Si jamais vous êtes limité, <a href="/fr/articles/npm/utilitaire-cli/">vous pourrez bien entendu créer votre propre
+          commande</a>, qui sera réutilisable dans
+          n'importe quel contexte.</p>
+          <h1 id="webpack-en-pratique"><a href="#webpack-en-pratique" class="phenomic-HeadingAnchor">#</a>Webpack en pratique</h1>
+          <p>Quelques ressources pour vous y mettre :</p>
+          <ul>
+          <li>Un premier <a href="/fr/articles/js/webpack/premier-exemple">exemple détaillé de configuration et d'utilisation</a>
+          basé sur notre retour d'expérience.</li>
+          </ul>
+          <p>En anglais :</p>
+          <ul>
+          <li><a href="http://webpack.github.io/docs/tutorials/getting-started/">Tutoriel officiel</a></li>
+          <li><a href="http://okonet.ru/viennajs-webpack-introduction/">Slides d'introduction</a></li>
+          <li><a href="https://github.com/petehunt/webpack-howto">"How to" webpack</a></li>
+          </ul>
+          <p><a href="http://webpack.github.io/docs">Webpack possède une documentation</a>
+          assez fournie, mais pas vraiment facile à aborder lorsqu'on découvre le projet.
+          Aussi, n'hésitez pas à nous poser vos questions en commentaires.</p>
+          </div>
+
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>© 2016 Company, Inc.</p>
+      </footer>
+
+    </div>
+</body>
+</html>
