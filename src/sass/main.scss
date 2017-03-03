@@ -1,7 +1,23 @@
+@import 'partial/_variables';
+@import 'partial/_buttons';
+@import 'partial/_nav';
+
 body {
     div.container{
+        h1{
+            color: $primary-color
+        }
         div.jumbotron{
-            background-color: beige; 
+            background-color: beige;
+            a{
+                color: $primary-color;
+                border-radius: 2px;
+            }
+            ul{
+                li{
+                    color: $secondary-color;
+                }
+            }
         }
         h3{
             color: cornflowerblue
