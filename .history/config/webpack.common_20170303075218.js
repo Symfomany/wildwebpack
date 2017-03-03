@@ -45,6 +45,8 @@ module.exports = {
       { test: /\.jsx?$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/ },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'] },
+       // { test: /\.(png|jpe?g|gif|svg)$/, loaders: ['file?hash=sha512&digest=hex&name=[hash].[ext]', 'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'] },
+      // inline base64 URLs for <=55k images, direct URLs for the rest
       { test: /\.(png|jpe?g)$/, loader: 'url-loader?limit=55192' },
       // helps to load bootstrap's css.
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

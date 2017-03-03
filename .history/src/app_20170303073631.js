@@ -2,8 +2,7 @@
 import './sass/main.scss';
 import './css/main.css';
 import Message from './js/es';
-
-const jQuery = require('jquery');
+import jQuery from 'jquery';
 
 /**
  * Just a Test for  ES6...
@@ -18,5 +17,7 @@ console.warn(bonjour);
 jQuery(() => console.log('JQuery is ready...'));
 
 /**
- * Your (modular) logic here...
+ * Your code here...
  */
+
+

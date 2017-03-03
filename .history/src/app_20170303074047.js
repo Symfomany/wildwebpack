@@ -3,8 +3,6 @@ import './sass/main.scss';
 import './css/main.css';
 import Message from './js/es';
 
-const jQuery = require('jquery');
-
 /**
  * Just a Test for  ES6...
  */
@@ -15,8 +13,10 @@ console.warn(bonjour);
 /**
  * Just a test for Jquery...
  */
-jQuery(() => console.log('JQuery is ready...'));
+// jQuery(() => console.log('JQuery is ready...'));
 
 /**
  * Your (modular) logic here...
  */
+
+

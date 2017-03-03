@@ -56,6 +56,6 @@
     "build": "npm run clean && npm run lint  && export NODE_ENV=dev && webpack",
     "build:production": "npm run clean && npm run lint &&  export NODE_ENV=prod && webpack -p",
     "lint": "eslint src/ || true",
-    "start": "webpack-dev-server --inline --port 3000 --content-base dist/"
+    "start": "webpack-dev-server --inline --port 4200 --content-base dist/"
   }
 }

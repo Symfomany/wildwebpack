@@ -2,7 +2,6 @@
 import './sass/main.scss';
 import './css/main.css';
 import Message from './js/es';
-
 const jQuery = require('jquery');
 
 /**
