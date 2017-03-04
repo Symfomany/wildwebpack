@@ -2,6 +2,8 @@
 
 Wild Webpack Project
 =======================
+Simple Project around Webpack 2 , a Beautiful Bundler of your assets
+
 
 Stack
 -----
